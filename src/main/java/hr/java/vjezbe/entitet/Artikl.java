@@ -1,0 +1,42 @@
+package hr.java.vjezbe.entitet;
+
+import java.math.BigDecimal;
+
+public class Artikl {
+
+    public Artikl(String naslov, String opis, BigDecimal cijena) {
+        this.naslov = naslov;
+        this.opis = opis;
+        this.cijena = cijena;
+    }
+
+    public String getNaslov() {
+        return naslov;
+    }
+
+    public void setNaslov(String naslov) {
+        this.naslov = naslov;
+    }
+
+    private String naslov;
+
+    public String getOpis() {
+        return opis;
+    }
+
+    public void setOpis(String opis) {
+        this.opis = opis;
+    }
+
+    private String opis;
+
+    public BigDecimal getCijena() {
+        return cijena;
+    }
+
+    public void setCijena(BigDecimal cijena) {
+        this.cijena = cijena;
+    }
+
+    private BigDecimal cijena;
+}
