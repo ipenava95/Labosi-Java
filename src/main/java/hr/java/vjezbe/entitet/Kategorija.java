@@ -2,6 +2,14 @@ package hr.java.vjezbe.entitet;
 
 public class Kategorija {
 
+    private String naziv;
+    private Artikl[] artikl;
+
+    public Kategorija(String naziv, Artikl[] artikl) {
+        this.naziv = naziv;
+        this.artikl = artikl;
+    }
+
     public String getNaziv() {
         return naziv;
     }
@@ -15,14 +23,6 @@ public class Kategorija {
     }
 
     public void setArtikl(Artikl[] artikl) {
-        this.artikl = artikl;
-    }
-
-    private String naziv;
-    private Artikl[] artikl;
-
-    public Kategorija(String naziv, Artikl[] artikl) {
-        this.naziv = naziv;
         this.artikl = artikl;
     }
 }

@@ -4,6 +4,10 @@ import java.math.BigDecimal;
 
 public class Artikl {
 
+    private String naslov;
+    private String opis;
+    private BigDecimal cijena;
+
     public Artikl(String naslov, String opis, BigDecimal cijena) {
         this.naslov = naslov;
         this.opis = opis;
@@ -18,8 +22,6 @@ public class Artikl {
         this.naslov = naslov;
     }
 
-    private String naslov;
-
     public String getOpis() {
         return opis;
     }
@@ -27,8 +29,6 @@ public class Artikl {
     public void setOpis(String opis) {
         this.opis = opis;
     }
-
-    private String opis;
 
     public BigDecimal getCijena() {
         return cijena;
@@ -38,5 +38,5 @@ public class Artikl {
         this.cijena = cijena;
     }
 
-    private BigDecimal cijena;
+
 }
