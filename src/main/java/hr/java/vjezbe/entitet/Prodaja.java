@@ -3,6 +3,17 @@ package hr.java.vjezbe.entitet;
 import java.time.LocalDate;
 
 public class Prodaja {
+
+    private Artikl artikl;
+    private Korisnik korisnik;
+    private LocalDate datumObjave;
+
+    public Prodaja(Artikl artikl, Korisnik korisnik, LocalDate datumObjave) {
+        this.artikl = artikl;
+        this.korisnik = korisnik;
+        this.datumObjave = datumObjave;
+    }
+
     public Artikl getArtikl() {
         return artikl;
     }
@@ -24,16 +35,6 @@ public class Prodaja {
     }
 
     public void setDatumObjave(LocalDate datumObjave) {
-        this.datumObjave = datumObjave;
-    }
-
-    private Artikl artikl;
-    private Korisnik korisnik;
-    private LocalDate datumObjave;
-
-    public Prodaja(Artikl artikl, Korisnik korisnik, LocalDate datumObjave) {
-        this.artikl = artikl;
-        this.korisnik = korisnik;
         this.datumObjave = datumObjave;
     }
 }
