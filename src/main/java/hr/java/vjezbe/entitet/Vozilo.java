@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 
 public interface Vozilo {
 
-    default BigDecimal izracunajKw(BigDecimal bigDecimal){
-        return BigDecimal.valueOf(0);
+    default BigDecimal izracunajKw(BigDecimal snaga){
+        return snaga.multiply(BigDecimal.valueOf(1.359621617));
     }
 
     BigDecimal izracunajGrupuOsiguranja();
