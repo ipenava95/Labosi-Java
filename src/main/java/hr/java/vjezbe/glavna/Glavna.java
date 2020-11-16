@@ -1,12 +1,20 @@
 package hr.java.vjezbe.glavna;
 
 import hr.java.vjezbe.entitet.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+/**
+ * Poziva sve pomoćne metode, traži unos podataka i ispisuje tekst oglasa.
+ * @author svgip03
+ */
+
 public class Glavna {
+    private static final Logger logger = LoggerFactory.getLogger(Glavna.class);
     private static int brojKorisnika;
     private static int brojKategorija;
     private static int brojArtikalaNaProdaju;
@@ -18,6 +26,10 @@ public class Glavna {
     private static Korisnik[] odabraniKorisnici;
     private static Artikl[] odabraniArtikli;
 
+    /**
+     * Traži unos podataka o korisnicima.
+     * @param scanner Scanner
+     */
     private static void unesikorisnika(Scanner scanner){
         System.out.print("Unesite broj korisnika koji zelite unijeti: "); //trazi unos
         brojKorisnika = Integer.parseInt(scanner.nextLine()); //cita unos
@@ -59,6 +71,10 @@ public class Glavna {
         }
     }
 
+    /**
+     * Traži unos podataka o kategorijama i artiklima.
+     * @param scanner Scanner
+     */
     private static void unesiKategorije(Scanner scanner){
         System.out.print("Unesite broj kategorija koji zelite unijeti: ");
         brojKategorija = Integer.parseInt(scanner.nextLine());
@@ -73,9 +89,10 @@ public class Glavna {
             ukupanBrojArtikala = ukupanBrojArtikala + brojArtikala;
             Artikl[] artikli = new Artikl[brojArtikala];
             for (int j = 1; j <= brojArtikala; j++) {
-                System.out.println("Unesite tip "+i+". artikla:");
+                System.out.println("Unesite tip "+j+". artikla:");
                 System.out.println("1. Usluga");
                 System.out.println("2. Automobil");
+                System.out.println("3. Stan");
                 System.out.println("Odabir >>");
                 switch (Integer.parseInt(scanner.nextLine())) {
                     case 1:
@@ -98,8 +115,19 @@ public class Glavna {
                         BigDecimal snaga = new BigDecimal(scanner.nextLine());
                         artikli[j - 1] = new Automobil(naslov2, opis2, cijena2, snaga);
                         break;
+                    case 3:
+                        System.out.print("Unesite naslov " + j + ". oglasa stana: ");
+                        String naslov3 = scanner.nextLine();
+                        System.out.print("Unesite opis " + j + ". oglasa stana: ");
+                        String opis3 = scanner.nextLine();
+                        System.out.print("Unesite kvadraturu " + j + ". oglasa stana: ");
+                        int kvadratura = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Unesite cijenu " + j + ". oglasa stana: ");
+                        BigDecimal cijena3 = new BigDecimal(scanner.nextLine());
+                        artikli[j - 1] = new Stan(naslov3, opis3, cijena3, kvadratura);
+                        break;
                     default:
-                        System.out.println("Nepravilan unos! Molim izabrati 1 ili 2!");
+                        System.out.println("Nepravilan unos! Molim izabrati jedan broj od ponudjenih!");
                         j--;
                         break;
                 }
@@ -113,6 +141,10 @@ public class Glavna {
         odabraniArtikli = new Artikl[brojArtikalaNaProdaju];
     }
 
+    /**
+     * Traži izbor korisnika.
+     * @param scanner Scanner
+     */
     private static void odaberiKorisnika(Scanner scanner){
         System.out.println("Odaberite korisnika: ");
         for(int i=1;i<=brojKorisnika;i++){
@@ -122,6 +154,10 @@ public class Glavna {
         odabraniKorisnik = Integer.parseInt(scanner.nextLine());
     }
 
+    /**
+     * Traži izbor kategorije.
+     * @param scanner Scanner
+     */
     private static void odaberiKategoriju(Scanner scanner){
         System.out.println("Odaberite kategoriju: ");
         for(int i=1;i<=brojKategorija;i++){
@@ -131,6 +167,10 @@ public class Glavna {
         odabranaKategorija = Integer.parseInt(scanner.nextLine());
     }
 
+    /**
+     * Traži izbor artikla.
+     * @param scanner Scanner
+     */
     private static void odaberiArtikl(Scanner scanner){
         System.out.println("Odaberite artikl: ");
         for(int i=1;i<=kategorije[odabranaKategorija-1].getArtikl().length;i++){
@@ -140,6 +180,9 @@ public class Glavna {
         odabraniArtikl = Integer.parseInt(scanner.nextLine());
     }
 
+    /**
+     * Ispisuje tekst oglasa.
+     */
     private static void ispisiArtikleNaProdaju(){
         System.out.println("Trenutno su oglasi na prodaju: ");
         for (int i=0; i<brojArtikalaNaProdaju; i++) {
